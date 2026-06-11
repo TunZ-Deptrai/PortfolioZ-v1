@@ -94,6 +94,7 @@ const StyleLoader = () => (
 
 const TRANSLATIONS = {
   vi: {
+    navHome: "Trang Chủ",
     navWork: "Dự Án",
     navAbout: "Giới Thiệu",
     navContact: "Liên Hệ",
@@ -185,6 +186,7 @@ const TRANSLATIONS = {
     skillsDevTitle: "Development"
   },
   en: {
+    navHome: "Home",
     navWork: "Projects",
     navAbout: "About",
     navContact: "Contact",
@@ -840,6 +842,13 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
         {/* Desktop links - Smooth scroll triggers */}
         <div className="hidden md:flex items-center gap-8">
           <button
+            onClick={() => handleLinkClick("home", "hero")}
+            className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
+          >
+            {t.navHome}
+          </button>
+
+          <button
             onClick={() => handleLinkClick("home", "work")}
             className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
           >
@@ -926,6 +935,14 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 top-[60px] bg-[#0C0C0E]/98 backdrop-blur-xl z-40 md:hidden flex flex-col p-10 transition-all duration-300 border-t border-white/[0.05]">
           <div className="flex flex-col gap-6 my-auto">
+            <button
+              onClick={() => handleLinkClick("home", "hero")}
+              className="text-left font-extrabold text-3xl tracking-tight py-2 border-b border-white/[0.05] flex items-center justify-between text-white"
+            >
+              <span>{t.navHome}</span>
+              <StarDecorationSVG className="w-5 h-5 opacity-40" />
+            </button>
+
             <button
               onClick={() => handleLinkClick("home", "work")}
               className="text-left font-extrabold text-3xl tracking-tight py-2 border-b border-white/[0.05] flex items-center justify-between text-white"
@@ -1890,14 +1907,14 @@ const Footer = ({ lang, onNavigate, onShowToast }) => {
         </div>
 
         {/* Bottom Section: Copyright & Actions */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] pt-8 border-t border-white/[0.05]">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 text-[11px] pt-8 border-t border-white/[0.05]">
           <div className="text-center md:text-left space-y-1">
             <p className="font-bold text-white tracking-wider">© 2026 {t.footerReserved}</p>
             <p className="text-zinc-500 font-mono text-[9px]">{t.footerSubtext}</p>
           </div>
 
           {/* Middle Spinning Star Badge */}
-          <div className="flex items-center justify-center py-2 md:py-0">
+          <div className="flex items-center justify-center">
             <div className="relative group cursor-pointer transition-transform duration-500 hover:scale-110">
               <svg 
                 className="w-8 h-8 text-[#E11D48] animate-spin-slow group-hover:[animation-duration:3s] drop-shadow-[0_0_12px_rgba(225,29,72,0.4)]" 
@@ -1914,7 +1931,7 @@ const Footer = ({ lang, onNavigate, onShowToast }) => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 font-bold uppercase tracking-widest text-white">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 font-bold uppercase tracking-widest text-white">
             <a 
               href="/CV_VoHoangTuan.pdf"
               download="CV_VoHoangTuan.pdf"
