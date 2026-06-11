@@ -1898,24 +1898,19 @@ const Footer = ({ lang, onNavigate, onShowToast }) => {
 
           {/* Middle Spinning Star Badge */}
           <div className="flex items-center justify-center py-2 md:py-0">
-            <div className="relative group cursor-pointer">
-              {/* Outer glow aura */}
-              <div className="absolute inset-0 bg-[#E11D48] rounded-full blur-md opacity-20 group-hover:opacity-60 transition-opacity duration-500"></div>
-              {/* Rotating Star wrapper */}
-              <div className="relative bg-[#141416] border border-white/[0.08] p-3 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:border-[#E11D48]/30">
-                <svg 
-                  className="w-5 h-5 text-[#E11D48] animate-spin-slow group-hover:[animation-duration:3s]" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ transition: 'transform 0.5s ease' }}
-                >
-                  <path 
-                    d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" 
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
+            <div className="relative group cursor-pointer transition-transform duration-500 hover:scale-110">
+              <svg 
+                className="w-8 h-8 text-[#E11D48] animate-spin-slow group-hover:[animation-duration:3s] drop-shadow-[0_0_12px_rgba(225,29,72,0.4)]" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ transition: 'transform 0.5s ease' }}
+              >
+                <path 
+                  d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" 
+                  fill="currentColor"
+                />
+              </svg>
             </div>
           </div>
 
