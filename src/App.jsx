@@ -150,8 +150,8 @@ const TRANSLATIONS = {
     errName: "Vui lòng nhập họ và tên của bạn",
     errEmail: "Định dạng email không hợp lệ",
     errMessage: "Vui lòng ghi chi tiết thêm (tối thiểu 20 ký tự)",
-    footerReserved: "Hoang Tuanz. Bảo lưu mọi quyền lợi.",
-    footerSubtext: "Được thiết kế và lập trình tỉ mỉ với chất lượng tối ưu nhất.",
+    footerReserved: "Hoang Tuanz",
+    footerSubtext: "Được xây dựng bằng React, Vite & Tailwind CSS.",
     
     process1Title: "1. Research",
     process1Sub: "Thấu hiểu & Khảo sát",
@@ -241,8 +241,8 @@ const TRANSLATIONS = {
     errName: "Please enter your full name",
     errEmail: "Invalid email format",
     errMessage: "Please provide more details (minimum 20 characters)",
-    footerReserved: "Hoang Tuanz. All rights reserved.",
-    footerSubtext: "Designed & coded with absolute precision and quality.",
+    footerReserved: "Hoang Tuanz",
+    footerSubtext: "Built with React, Vite & Tailwind CSS.",
 
     process1Title: "1. Research",
     process1Sub: "Empathize & Explore",
@@ -1798,23 +1798,23 @@ const Footer = ({ lang, onNavigate, onShowToast }) => {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6 font-bold uppercase tracking-widest text-white">
-          <button onClick={() => handleFooterLinkClick("work")} className="hover:text-[#E11D48] transition-colors">{t.navWork}</button>
-          <button onClick={() => handleFooterLinkClick("about")} className="hover:text-[#E11D48] transition-colors">{t.navAbout}</button>
-          <button onClick={() => handleFooterLinkClick("contact")} className="hover:text-[#E11D48] transition-colors">{t.navContact}</button>
           <button 
-            onClick={() => {
-              const infoMsg = lang === 'vi' 
-                ? "Bản CV PDF đang được tối ưu hóa thiết kế mới. Vui lòng nhắn tin trực tiếp ở mục Liên hệ bên dưới để nhận CV cập nhật mới nhất!"
-                : "The PDF CV is currently undergoing visual updates. Please send an inquiry in the Contact form below to get the latest version!";
-              onShowToast(infoMsg);
-            }} 
-            className="font-bold text-[10px] tracking-widest uppercase bg-[#E11D48] text-white px-4 py-2.5 rounded-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-md shadow-[#E11D48]/25 flex items-center gap-1.5 border-none"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#E11D48] transition-colors text-[10px] tracking-widest uppercase flex items-center gap-1 focus:outline-none"
           >
-            <svg className="w-3.5 h-3.5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            ↑ {lang === 'vi' ? 'Lên đầu trang' : 'Back to Top'}
+          </button>
+          
+          <a 
+            href="/CV_VoHoangTuan.pdf"
+            download="CV_VoHoangTuan.pdf"
+            className="text-[10px] tracking-widest uppercase bg-white/[0.03] border border-white/[0.08] text-zinc-300 px-4 py-2.5 rounded-lg hover:bg-white/[0.08] hover:text-white transition-all duration-300 flex items-center gap-1.5"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             {t.heroDownloadCV}
-          </button>
+          </a>
         </div>
 
         <div className="flex items-center gap-2">
