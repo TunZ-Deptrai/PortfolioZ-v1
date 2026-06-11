@@ -1785,44 +1785,128 @@ const Contact = ({ lang }) => {
 const Footer = ({ lang, onNavigate, onShowToast }) => {
   const t = TRANSLATIONS[lang];
 
-  const handleFooterLinkClick = (sectionId) => {
-    onNavigate("home", sectionId);
-  };
-
   return (
-    <footer className="relative bg-[#0C0C0E] border-t border-white/[0.05] py-10 px-6 sm:px-12 z-10 text-zinc-400">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-[11px]">
-        <div className="text-center md:text-left space-y-0.5">
-          <p className="font-bold text-white tracking-wider">© 2026 {t.footerReserved}</p>
-          <p className="text-zinc-500">{t.footerSubtext}</p>
+    <footer className="relative bg-[#0C0C0E] border-t border-white/[0.05] pt-16 pb-12 px-6 sm:px-12 z-10 text-zinc-400">
+      <div className="max-w-7xl mx-auto space-y-12">
+        {/* Top Section: Brand & Navigation Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.05]">
+          {/* Column 1: Brand & Bio */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-2">
+              <span className="font-headings font-extrabold text-2xl text-white tracking-tighter uppercase">
+                HOANG <span className="text-[#E11D48]">TUANZ</span>
+              </span>
+            </div>
+            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm font-light">
+              {lang === 'vi' 
+                ? "UI/UX Designer chuyển hóa ý tưởng thành trải nghiệm kỹ thuật số trực quan, thiết thực và hấp dẫn." 
+                : "UI/UX Designer transforming ideas into intuitive, functional, and engaging digital products."}
+            </p>
+            {/* Status indicator */}
+            <div className="inline-flex items-center gap-2.5 bg-white/[0.02] border border-white/[0.05] px-3.5 py-1.5 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E11D48] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E11D48]"></span>
+              </span>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-white font-bold">
+                {lang === 'vi' ? 'Sẵn sàng nhận dự án' : 'Available for hire'}
+              </span>
+            </div>
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold">
+              {lang === 'vi' ? 'Điều hướng' : 'Navigation'}
+            </h4>
+            <ul className="space-y-2.5 text-xs font-medium">
+              <li>
+                <button 
+                  onClick={() => onNavigate("home", "hero")}
+                  className="text-zinc-300 hover:text-[#E11D48] transition-colors uppercase tracking-wider text-[10px]"
+                >
+                  {lang === 'vi' ? 'Trang chủ' : 'Home'}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate("home", "about")}
+                  className="text-zinc-300 hover:text-[#E11D48] transition-colors uppercase tracking-wider text-[10px]"
+                >
+                  {t.navAbout}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate("home", "work")}
+                  className="text-zinc-300 hover:text-[#E11D48] transition-colors uppercase tracking-wider text-[10px]"
+                >
+                  {t.navWork}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate("home", "contact")}
+                  className="text-zinc-300 hover:text-[#E11D48] transition-colors uppercase tracking-wider text-[10px]"
+                >
+                  {t.navContact}
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Featured Projects */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold">
+              {lang === 'vi' ? 'Dự án tiêu biểu' : 'Featured Projects'}
+            </h4>
+            <ul className="space-y-2.5 text-xs font-medium">
+              {[
+                { name: "Task Manager System", slug: "task-manager" },
+                { name: "Eduplanz", slug: "eduplanz" },
+                { name: "Blue Hotel", slug: "blue-hotel" },
+                { name: "Mind Garden", slug: "mind-garden" }
+              ].map((p) => (
+                <li key={p.slug} className="flex items-center gap-1.5">
+                  <StarDecorationSVG className="w-2 h-2 text-[#E11D48]" />
+                  <button 
+                    onClick={() => onNavigate(`work/${p.slug}`)}
+                    className="text-zinc-300 hover:text-[#E11D48] transition-colors uppercase tracking-wider text-[10px] text-left"
+                  >
+                    {p.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 font-bold uppercase tracking-widest text-white">
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="hover:text-[#E11D48] transition-colors text-[10px] tracking-widest uppercase flex items-center gap-1 focus:outline-none"
-          >
-            ↑ {lang === 'vi' ? 'Lên đầu trang' : 'Back to Top'}
-          </button>
-          
-          <a 
-            href="/CV_VoHoangTuan.pdf"
-            download="CV_VoHoangTuan.pdf"
-            className="text-[10px] tracking-widest uppercase bg-white/[0.03] border border-white/[0.08] text-zinc-300 px-4 py-2.5 rounded-lg hover:bg-white/[0.08] hover:text-white transition-all duration-300 flex items-center gap-1.5"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            {t.heroDownloadCV}
-          </a>
-        </div>
+        {/* Bottom Section: Copyright & Actions */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-[11px]">
+          <div className="text-center sm:text-left space-y-1">
+            <p className="font-bold text-white tracking-wider">© 2026 {t.footerReserved}</p>
+            <p className="text-zinc-500 font-mono text-[9px]">{t.footerSubtext}</p>
+          </div>
 
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E11D48] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E11D48]"></span>
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#E11D48] font-bold">Open to work</span>
+          <div className="flex flex-wrap items-center justify-center gap-6 font-bold uppercase tracking-widest text-white">
+            <a 
+              href="/CV_VoHoangTuan.pdf"
+              download="CV_VoHoangTuan.pdf"
+              className="text-[10px] tracking-widest uppercase bg-white/[0.03] border border-white/[0.08] text-zinc-300 px-4 py-2.5 rounded-lg hover:bg-white/[0.08] hover:text-white transition-all duration-300 flex items-center gap-1.5"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              {t.heroDownloadCV}
+            </a>
+
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="hover:text-[#E11D48] transition-colors text-[10px] tracking-widest uppercase flex items-center gap-1.5 focus:outline-none bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.05] px-4 py-2.5 rounded-lg duration-300"
+            >
+              ↑ {lang === 'vi' ? 'Lên đầu trang' : 'Back to Top'}
+            </button>
+          </div>
         </div>
       </div>
     </footer>
