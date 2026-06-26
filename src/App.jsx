@@ -100,7 +100,7 @@ const TRANSLATIONS = {
     navContact: "Liên Hệ",
     navHire: "HỢP TÁC NGAY",
     heroAvailable: "Sẵn sàng nhận dự án · TP. Hồ Chí Minh 🇻🇳",
-    heroSubheading: "UI/UX Designer chuyển hóa ý tưởng thành trải nghiệm số trực quan và lôi cuốn.",
+    heroSubheading: "Thiết kế sản phẩm số đơn giản, trực quan và lấy người dùng làm trung tâm",
     heroViewWork: "Xem sản phẩm",
     heroDownloadCV: "Tải CV (.PDF)",
     heroOpenToWork: "Nhận dự án tự do",
