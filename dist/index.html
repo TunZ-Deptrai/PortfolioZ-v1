@@ -7,8 +7,297 @@
     <title>TuanZ | Portfolio</title>
     <link rel="stylesheet" crossorigin href="/restored.css" />
     <script type="module" crossorigin src="/assets/index-D_Lzj2AC.js"></script>
+    <!-- z-intro:start -->
+    <style>
+      html.z-intro-active,
+      html.z-intro-active body {
+        overflow: hidden;
+      }
+
+.logo-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.1), transparent 28%),
+        radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.04), transparent 20%),
+        #0C0C0E;
+      animation: introFadeOut 0.72s cubic-bezier(0.76, 0, 0.24, 1) 2.75s forwards;
+      pointer-events: none;
+    }
+
+    .logo-intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+      opacity: 0;
+      transform: scale(1.05);
+      animation: introGridBreath 2.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .logo-intro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0 34%, rgba(12,12,14,0.52) 76%, #0C0C0E 100%);
+      opacity: 0;
+      animation: introVignette 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .logo-intro__stage {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: min(78vw, 24rem);
+      aspect-ratio: 1;
+      transform: translateY(6px);
+      animation: introStageExit 0.78s cubic-bezier(0.76, 0, 0.24, 1) 2.46s forwards;
+    }
+
+    .logo-intro__logo-wrap {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transform: scale(0.76) rotate(-2deg);
+      animation: introLogoReveal 1.28s cubic-bezier(0.16, 1, 0.3, 1) 1.26s forwards;
+    }
+
+    .logo-intro__logo {
+      width: clamp(5.5rem, 16vw, 8.4rem);
+      height: clamp(5.5rem, 16vw, 8.4rem);
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.24)) drop-shadow(0 0 34px rgba(225, 29, 72, 0.46));
+    }
+
+    .logo-intro__orbit {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(3.1rem, 8vw, 4.4rem);
+      height: clamp(4.35rem, 11vw, 6.2rem);
+      transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.36) rotate(-28deg);
+      opacity: 0;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      animation: introStarFlight 1.52s cubic-bezier(0.18, 0.82, 0.2, 1) 0.08s forwards;
+    }
+
+    .logo-intro__flying-star {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+      transform-origin: 50% 50%;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      filter: drop-shadow(0 0 14px rgba(255,255,255,0.72)) drop-shadow(0 0 24px rgba(225,29,72,0.55));
+      animation: introStarPulse 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+    }
+
+    .logo-intro__gemini-star {
+      transform-origin: 50% 50%;
+    }
+    .logo-intro__trail {
+      position: absolute;
+      left: 50%;
+      top: 56%;
+      width: 1px;
+      height: 42vh;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(225,29,72,0), rgba(225,29,72,0.34), rgba(255,255,255,0.22), transparent);
+      opacity: 0;
+      transform: translateX(-50%) translateY(16vh) scaleY(0.24);
+      transform-origin: top center;
+      will-change: transform, opacity;
+      animation: introTrailRise 1.28s cubic-bezier(0.2, 0.86, 0.22, 1) 0.12s forwards;
+    }
+
+    .logo-intro__impact {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(6rem, 18vw, 9rem);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.35);
+      animation: introImpactRing 0.78s cubic-bezier(0.16, 1, 0.3, 1) 1.24s forwards;
+    }
+
+    .logo-intro__impact::after {
+      content: "";
+      position: absolute;
+      inset: 24%;
+      border: 1px solid rgba(225,29,72,0.24);
+      border-radius: inherit;
+    }
+
+    .logo-intro__spark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0.46rem;
+      aspect-ratio: 1;
+      background: #E11D48;
+      clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+      opacity: 0;
+      filter: drop-shadow(0 0 10px rgba(225,29,72,0.65));
+      animation: introSparkBurst 0.82s cubic-bezier(0.16, 1, 0.3, 1) 1.32s forwards;
+    }
+
+    .logo-intro__spark--one { --spark-x: -5.2rem; --spark-y: -3.3rem; }
+    .logo-intro__spark--two { --spark-x: 5.1rem; --spark-y: -2.2rem; width: 0.36rem; background: #FFFFFF; }
+    .logo-intro__spark--three { --spark-x: 3.8rem; --spark-y: 4rem; width: 0.32rem; }
+
+    .logo-intro__open-light {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(8rem, 22vw, 13rem);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(225,29,72,0.2) 34%, rgba(225,29,72,0.08) 52%, transparent 70%);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.16);
+      transform-origin: center;
+      will-change: transform, opacity;
+      animation: introOpenLight 0.9s cubic-bezier(0.76, 0, 0.24, 1) 1.92s forwards;
+    }
+    @keyframes introGridBreath {
+      0% { opacity: 0; transform: scale(1.06); }
+      52% { opacity: 0.1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.98); }
+    }
+
+    @keyframes introVignette {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes introStarFlight {
+      0% { opacity: 0; transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.36) rotate(-28deg); }
+      10% { opacity: 1; }
+      100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1) rotate(38deg); }
+    }
+
+    @keyframes introStarPulse {
+      0%, 78% { transform: translateZ(0) scale(1); opacity: 1; }
+      100% { transform: translateZ(0) scale(0.2); opacity: 0; }
+    }
+
+    @keyframes introTrailRise {
+      0% { opacity: 0; transform: translate3d(-50%, 20vh, 0) scaleY(0.12); }
+      18% { opacity: 0.66; }
+      100% { opacity: 0; transform: translate3d(-50%, -22vh, 0) scaleY(0.16); }
+    }
+
+    @keyframes introImpactRing {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.35); }
+      38% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.55); }
+    }
+
+    @keyframes introLogoReveal {
+      0% { opacity: 0; transform: scale(0.76) rotate(-2deg); }
+      38% { opacity: 1; transform: scale(1.04) rotate(0deg); }
+      70% { opacity: 1; transform: scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: scale(0.94) rotate(1deg); }
+    }
+
+    @keyframes introSparkBurst {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.18) rotate(0deg); }
+      32% { opacity: 1; transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y))) scale(1) rotate(42deg); }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y) - 1rem)) scale(0.24) rotate(132deg); }
+    }
+
+    @keyframes introOpenLight {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.16); }
+      32% { opacity: 0.86; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(4.8); }
+    }
+    @keyframes introStageExit {
+      0% { opacity: 1; transform: translateY(6px) scale(1); }
+      100% { opacity: 0; transform: translateY(-10px) scale(0.97); }
+    }
+
+    @keyframes introFadeOut {
+      0% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-intro,
+      .logo-intro::before,
+      .logo-intro::after,
+      .logo-intro__stage,
+      .logo-intro__logo-wrap,
+      .logo-intro__orbit,
+      .logo-intro__flying-star,
+      .logo-intro__trail,
+      .logo-intro__impact,
+      .logo-intro__spark,
+      .logo-intro__open-light {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+      }
+    }
+    </style>
+    <!-- z-intro:end -->
   </head>
   <body>
+    <!-- z-intro:start -->
+    <div id="z-intro" class="logo-intro" aria-hidden="true">
+      <div class="logo-intro__stage">
+        <span class="logo-intro__trail"></span>
+        <span class="logo-intro__open-light"></span>
+        <span class="logo-intro__impact"></span>
+        <span class="logo-intro__spark logo-intro__spark--one"></span>
+        <span class="logo-intro__spark logo-intro__spark--two"></span>
+        <span class="logo-intro__spark logo-intro__spark--three"></span>
+        <div class="logo-intro__logo-wrap">
+          <img src="/Logo.png" alt="" class="logo-intro__logo" draggable="false" />
+        </div>
+        <div class="logo-intro__orbit">
+                    <svg class="logo-intro__flying-star" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="introGeminiStarGradient" x1="14" y1="8" x2="52" y2="58" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="0.48" stop-color="#fff7fb" />
+                <stop offset="1" stop-color="#ffc2d1" />
+              </linearGradient>
+            </defs>
+            <path class="logo-intro__gemini-star" d="M32 2C35.9 21.1 42.9 28.1 62 32C42.9 35.9 35.9 42.9 32 62C28.1 42.9 21.1 35.9 2 32C21.1 28.1 28.1 21.1 32 2Z" fill="url(#introGeminiStarGradient)" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- z-intro:end -->
     <div id="root"></div>
+    <!-- z-intro:start -->
+    <script>
+      (() => {
+        const intro = document.getElementById("z-intro");
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.documentElement.classList.add("z-intro-active");
+        window.setTimeout(() => {
+          intro?.remove();
+          document.documentElement.classList.remove("z-intro-active");
+        }, reduced ? 700 : 3550);
+      })();
+    </script>
+    <!-- z-intro:end -->
   </body>
 </html>
