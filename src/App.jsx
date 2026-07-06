@@ -53,12 +53,63 @@ const StyleLoader = () => (
     }
 
     .hero-title-accent-premium::before {
-      display: none;
+      content: "";
+      position: absolute;
+      inset: -0.04em -0.08em -0.02em -0.08em;
+      z-index: 1;
+      background: linear-gradient(105deg, transparent 0%, transparent 34%, rgba(255, 255, 255, 0.72) 44%, rgba(225, 29, 72, 0.46) 50%, transparent 64%, transparent 100%);
+      opacity: 0;
+      transform: translate3d(-120%, 0, 0) skewX(-12deg);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      transition:
+        opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .hero-title-accent-premium .letter {
       color: transparent;
       -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title-accent-premium::after {
+      content: "Z";
+      position: absolute;
+      right: -0.01em;
+      top: 0.01em;
+      z-index: 2;
+      line-height: 0.92;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0.016em rgba(255, 255, 255, 0.84);
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.2), 0 0 28px rgba(225, 29, 72, 0.2);
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(0.99);
+      transform-origin: 58% 56%;
+      filter: drop-shadow(0 10px 24px rgba(225, 29, 72, 0));
+      pointer-events: none;
+      transition:
+        opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        -webkit-text-stroke-color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #hero h1:hover .hero-title-accent-premium {
+      filter: saturate(1.18) brightness(1.12) contrast(0.96) drop-shadow(0 0 22px rgba(225, 29, 72, 0.16));
+      animation-duration: 9s !important;
+    }
+
+    #hero h1:hover .hero-title-accent-premium::before {
+      opacity: 0.9;
+      transform: translate3d(120%, 0, 0) skewX(-12deg);
+    }
+
+    #hero h1:hover .hero-title-accent-premium::after {
+      opacity: 1;
+      transform: translate3d(0.025em, -0.025em, 0) rotate(5deg) scale(1.08);
+      filter: drop-shadow(0 12px 26px rgba(225, 29, 72, 0.2));
+      -webkit-text-stroke-color: rgba(255, 255, 255, 0.96);
     }
 
     .hero-title-accent-premium .letter::after {
@@ -131,8 +182,7 @@ const StyleLoader = () => (
     }
     .animate-spin-slow {
       animation: spinSlow 12s linear infinite;
-    }
-  `}} />
+    }  `}} />
 );
 
 const TRANSLATIONS = {
@@ -142,13 +192,14 @@ const TRANSLATIONS = {
     navAbout: "Giới Thiệu",
     navContact: "Liên Hệ",
     navHire: "HỢP TÁC NGAY",
-    heroAvailable: "Sẵn sàng nhận dự án · TP. Hồ Chí Minh 🇻🇳",    heroSubheading: "Thiết kế sản phẩm số đơn giản, trực quan và lấy người dùng làm trung tâm",
+    heroAvailable: "Sẵn sàng nhận dự án · TP. Hồ Chí Minh 🇻🇳",
+    heroSubheading: "Thiết kế sản phẩm số đơn giản, trực quan và lấy người dùng làm trung tâm",
     heroViewWork: "Xem sản phẩm",
     heroDownloadCV: "Tải CV (.PDF)",
     heroOpenToWork: "Nhận dự án tự do",
     aboutEyebrow: "Về Tôi",
-    aboutHeading: "CHUYỂN HÓA Ý TƯỞNG THÀNH TRẢI NGHIỆM THÂN THIỆN VỚI NGƯỜI DÙNG.",
-    aboutBio1: "Tôi là Hoang Tuanz, một UI/UX Designer với nền tảng kiến thức về Công nghệ thông tin. Tôi kết hợp sự hiểu biết về kỹ thuật với các nguyên lý thiết kế lấy người dùng làm trung tâm để tạo ra các sản phẩm kỹ thuật số trực quan, thiết thực và hấp dẫn.",
+    aboutHeading: "CHUYỂN HÓA Ý TƯỞNG THÀNH TRẢI NGHIỆM THÂN THIỆN VỚI NGƯỜI DÙNG",
+    aboutBio1: "Tôi là Tuấn, một UI/UX Designer với nền tảng kiến thức về Công nghệ thông tin. Tôi kết hợp sự hiểu biết về kỹ thuật với các nguyên lý thiết kế lấy người dùng làm trung tâm để tạo ra các sản phẩm kỹ thuật số trực quan, thiết thực và hấp dẫn.",
     aboutBio2: "Trong suốt quá trình thực tập và thực hiện các dự án cá nhân, tôi đã tích lũy được nhiều kinh nghiệm thực tiễn về thiết kế giao diện, vẽ wireframe, tạo mẫu thử (prototype) và thiết kế tập trung vào khả năng sử dụng bằng cách sử dụng Figma. Tôi đam mê phân tích nhu cầu người dùng, đơn giản hóa các luồng công việc phức tạp và thiết kế nên những trải nghiệm vừa đẹp mắt vừa dễ dàng sử dụng.",
     aboutSkillsTitle: "Công cụ & Kỹ năng",
     aboutProcessTitle: "Quy trình thiết kế của tôi",
@@ -158,7 +209,7 @@ const TRANSLATIONS = {
     aboutStatsClients: "Khách Hàng Lớn",
     aboutStatsAwards: "Giải Thưởng Thiết Kế",
     workEyebrow: "Dự án chọn lọc",
-    workHeading: "Các dự án tôi đặt tâm huyết nhất.",
+    workHeading: "Các dự án tôi đặt tâm huyết nhất",
     workSubtext: "Sự hòa phối hài hòa giữa các nguyên lý thiết kế, tư duy trải nghiệm khách hàng và giải pháp giao diện đương đại.",
     workFilterAll: "Tất cả",
     workFilterProduct: "Thiết kế sản phẩm",
@@ -179,7 +230,7 @@ const TRANSLATIONS = {
     caseGalleryTitle: "Bộ thư viện màn hình giao diện",
     caseNext: "DỰ ÁN TIẾP THEO",
     caseReadNext: "Đọc Case Study Tiếp Theo",
-    contactHeading: "Hãy cùng kiến tạo sản phẩm tuyệt vời.",
+    contactHeading: "Hãy cùng kiến tạo sản phẩm tuyệt vời",
     contactSubtext: "Bạn có ý tưởng lớn cần thực thi hoặc cần tư vấn cải thiện trải nghiệm sản phẩm số? Tôi luôn cởi mở đón nhận các cơ hội hợp tác sáng tạo đầy thử thách.",
     contactEmailLabel: "HÒM THƯ TRỰC TIẾP",
     contactLocationLabel: "ĐẠI ĐIỂM TRỰC THUỘC",
@@ -233,13 +284,14 @@ const TRANSLATIONS = {
     navAbout: "About",
     navContact: "Contact",
     navHire: "HIRE ME NOW",
-    heroAvailable: "Available for freelance · Ho Chi Minh City 🇻🇳",    heroSubheading: "UI/UX Designer transforming ideas into intuitive and engaging digital experiences.",
+    heroAvailable: "Available for freelance · Ho Chi Minh City 🇻🇳",
+    heroSubheading: "Simple, intuitive, user-centered digital product design.",
     heroViewWork: "View my work",
     heroDownloadCV: "Download CV (.PDF)",
     heroOpenToWork: "Open to work",
     aboutEyebrow: "About me",
-    aboutHeading: "TURNING IDEAS INTO USER-FRIENDLY EXPERIENCES.",
-    aboutBio1: "I'm Hoang Tuanz, a UI/UX Designer with a background in Information Technology. I combine technical understanding with user-centered design principles to create intuitive, functional, and engaging digital products.",
+    aboutHeading: "TURNING IDEAS INTO USER-FRIENDLY EXPERIENCES",
+    aboutBio1: "I'm Tuan, a UI/UX Designer with a background in Information Technology. I combine technical understanding with user-centered design principles to create intuitive, functional, and engaging digital products.",
     aboutBio2: "During my internship and personal projects, I gained hands-on experience in interface design, wireframing, prototyping, and usability-focused design using Figma. I enjoy analyzing user needs, simplifying complex workflows, and designing experiences that are both visually appealing and easy to use.",
     aboutSkillsTitle: "Tools & skills",
     aboutProcessTitle: "My design process",
@@ -249,7 +301,7 @@ const TRANSLATIONS = {
     aboutStatsClients: "Happy Clients",
     aboutStatsAwards: "Design Awards",
     workEyebrow: "Selected work",
-    workHeading: "Projects I'm proud of.",
+    workHeading: "Projects I'm proud of",
     workSubtext: "A mix of product design, mobile apps, and passion projects built with modern guidelines.",
     workFilterAll: "All",
     workFilterProduct: "Product Design",
@@ -270,7 +322,7 @@ const TRANSLATIONS = {
     caseGalleryTitle: "Interface Showcase",
     caseNext: "NEXT PROJECT",
     caseReadNext: "Read Next Case Study",
-    contactHeading: "Let's work together.",
+    contactHeading: "Let's work together",
     contactSubtext: "Have a project in mind? I'm currently available for freelance work and full-time roles. I'd love to hear from you.",
     contactEmailLabel: "DIRECT MAILBOX",
     contactLocationLabel: "BASED IN",
@@ -916,16 +968,16 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
           {/* Custom Lang Switcher */}
           <div className="flex items-center bg-white/[0.03] border border-white/[0.08] rounded-lg p-1 font-mono text-[11px] font-semibold">
             <button 
-              onClick={() => setLang('vi')}
-              className={`px-3 py-1.5 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400 hover:text-white'}`}
-            >
-              VI
-            </button>
-            <button 
               onClick={() => setLang('en')}
               className={`px-3 py-1.5 rounded-md transition-all ${lang === 'en' ? 'bg-[#E11D48] text-white' : 'text-zinc-400 hover:text-white'}`}
             >
               EN
+            </button>
+            <button 
+              onClick={() => setLang('vi')}
+              className={`px-3 py-1.5 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400 hover:text-white'}`}
+            >
+              VI
             </button>
           </div>
 
@@ -941,16 +993,16 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
         <div className="flex items-center gap-3 md:hidden">
           <div className="flex items-center bg-white/[0.03] border border-white/[0.08] rounded-lg p-0.5 font-mono text-[9px] font-semibold">
             <button 
-              onClick={() => setLang('vi')}
-              className={`px-2 py-1 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400'}`}
-            >
-              VI
-            </button>
-            <button 
               onClick={() => setLang('en')}
               className={`px-2 py-1 rounded-md transition-all ${lang === 'en' ? 'bg-[#E11D48] text-white' : 'text-zinc-400'}`}
             >
               EN
+            </button>
+            <button 
+              onClick={() => setLang('vi')}
+              className={`px-2 py-1 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400'}`}
+            >
+              VI
             </button>
           </div>
 
@@ -1064,7 +1116,7 @@ const Hero = ({ lang, onShowToast }) => {
         {/* Brand name with regular text Z */}
         <h1 className="font-headings font-black text-5xl sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem] tracking-tight leading-none uppercase relative select-none mb-4">
           <span className="text-white">HOANG </span>
-          <span className="hero-title-accent-premium">{["T", "U", "A", "N", "Z"].map((letter) => <span key={letter} className="letter" data-letter={letter}>{letter}</span>)}</span>
+          <span className="hero-title-accent-premium">TUANZ</span>
         </h1>
 
         <p className="mb-3 inline-flex items-center justify-center gap-2 font-headings text-2xl font-extrabold uppercase leading-none drop-shadow-[0_0_18px_rgba(255,255,255,0.16)]">
@@ -1163,50 +1215,44 @@ const About = ({ lang }) => {
           </div>
         </div>
 
-        {/* Profile Card & Stats */}
-        <div className="lg:col-span-5 space-y-10 lg:sticky lg:top-28">
-          <div className="relative group overflow-hidden bg-[#141416] border border-white/[0.06] p-6 rounded-xl crimson-border-hover">
-            <StarDecorationSVG className="absolute right-6 top-6 w-5 h-5 text-[#E11D48]/40 group-hover:text-[#E11D48] transition-colors" />
-            
-            <div className="relative h-72 bg-[#111113] rounded-lg overflow-hidden border border-white/[0.05]">
-              <img 
-                src="profile.png" 
-                alt="Hoang Tuanz Portrait" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
+        {/* Profile stage & Stats */}
+        <div className="lg:col-span-5 lg:sticky lg:top-28">
+          <div className="profile-stage relative min-h-[690px] sm:min-h-[740px] lg:min-h-[790px] overflow-visible">
+            <div className="absolute inset-x-0 top-8 h-[66%] rounded-xl bg-[#E11D48]/[0.025] blur-2xl" />
+            <StarDecorationSVG className="absolute right-3 top-2 w-4 h-4 text-[#E11D48] drop-shadow-[0_0_8px_rgba(225,29,72,0.4)]" />
+
+            <img
+              src="/z.svg"
+              alt=""
+              aria-hidden="true"
+              className="profile-stage__z absolute left-[calc(50%+3px)] top-[5.1rem] z-0 w-[94%] max-w-[590px] -translate-x-1/2 opacity-75"
+            />
+
+            <div className="absolute -inset-x-5 -top-4 z-10 mx-auto flex h-[79%] max-w-[610px] items-end justify-center overflow-visible">
+              <div className="absolute left-1/2 top-[44%] aspect-square w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(225,29,72,0.22)_0%,rgba(225,29,72,0.11)_42%,transparent_70%)] blur-2xl" />
+              <img
+                src="/Tuanzdeptrai2.svg"
+                alt="Hoang Tuanz Portrait"
+                className="profile-stage__person relative z-10 h-[94%] w-auto max-w-none -translate-x-[2%] object-contain object-bottom drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0E]/90 via-[#0C0C0E]/30 to-transparent flex flex-col justify-end p-6">
-                <h3 className="font-headings font-extrabold text-xl text-white uppercase">Hoang Tuanz</h3>
-                <p className="text-[10px] font-mono text-[#E11D48] font-bold tracking-widest mt-1 uppercase">Creative Product Architect</p>
-                
-                <div className="mt-3 flex flex-wrap gap-2 max-w-xs">
-                  <span className="text-[9px] font-mono bg-white/[0.05] border border-white/[0.1] px-2.5 py-1 rounded-lg text-zinc-300 font-semibold tracking-wider">User Psychology</span>
-                  <span className="text-[9px] font-mono bg-[#E11D48]/20 border border-[#E11D48]/40 px-2.5 py-1 rounded-lg text-[#E11D48] font-bold tracking-wider">Crimson Design</span>
+            </div>
+
+            <div className="profile-stage__stats-grid absolute inset-x-0 bottom-[3.7rem] z-20 grid grid-cols-2 gap-4 sm:gap-5">
+              {[
+                { value: "1+", label: t.aboutStatsYears },
+                { value: "5+", label: t.aboutStatsProjects },
+                { value: "120+", label: t.aboutStatsClients },
+                { value: "2", label: t.aboutStatsAwards }
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className={`profile-stage__stat min-h-[128px] rounded-xl border border-white/[0.08] bg-[#141416]/85 p-5 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl crimson-border-hover sm:p-6 ${i % 2 === 1 ? "translate-y-6" : ""}`}
+                >
+                  <h4 className="font-headings text-3xl font-extrabold leading-none text-[#E11D48] sm:text-4xl">{stat.value}</h4>
+                  <p className="mt-3 font-mono text-[9px] font-bold uppercase tracking-widest text-zinc-300">{stat.label}</p>
                 </div>
-              </div>
+              ))}
             </div>
-
-            <div className="mt-6 flex justify-between items-center text-[10px] font-mono">
-              <span className="font-semibold text-zinc-500 uppercase tracking-widest">HCMC, VN</span>
-              <span className="text-[#E11D48] font-extrabold uppercase tracking-widest flex items-center gap-1.5">
-                <span className="w-1 h-1 bg-[#E11D48] rounded-full animate-ping" />
-                {t.heroOpenToWork}
-              </span>
-            </div>
-          </div>
-
-          {/* Numerical statistics */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { value: "3+", label: t.aboutStatsYears },
-              { value: "20+", label: t.aboutStatsProjects },
-              { value: "8+", label: t.aboutStatsClients },
-              { value: "2", label: t.aboutStatsAwards }
-            ].map((stat, i) => (
-              <div key={i} className="bg-[#141416] border border-white/[0.06] p-5 rounded-xl crimson-border-hover">
-                <h4 className="font-headings font-extrabold text-2xl sm:text-3xl text-[#E11D48] mb-1">{stat.value}</h4>
-                <p className="text-[9px] text-zinc-400 uppercase tracking-widest font-mono font-bold">{stat.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
@@ -2008,7 +2054,7 @@ const CaseStudyWrapper = ({ lang, onNavigate }) => {
 };
 
 function PortfolioContent() {
-  const [lang, setLang] = useState("vi");
+  const [lang, setLang] = useState("en");
   const [toastMessage, setToastMessage] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -2086,4 +2132,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-

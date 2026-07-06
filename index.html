@@ -1,12 +1,11 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TuanZ | Portfolio</title>
-    <script type="module" crossorigin src="/dist/assets/index-D_Lzj2AC.js?v=deploy-tuanz-psychedelic-texture-v1"></script>
-    <link rel="stylesheet" crossorigin href="/restored.css" />
+    <title>HOANG TUANZ</title>
+    <link rel="stylesheet" crossorigin href="/restored.css?v=project-clean-v2" />
     <!-- z-intro:start -->
     <style>
       html.z-intro-active,
@@ -22,8 +21,7 @@
       place-items: center;
       overflow: hidden;
       background:
-        radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.1), transparent 28%),
-        radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.04), transparent 20%),
+        radial-gradient(circle at 50% 72%, rgba(255, 255, 255, 0.035), transparent 20%),
         #0C0C0E;
       animation: introFadeOut 0.72s cubic-bezier(0.76, 0, 0.24, 1) 2.75s forwards;
       pointer-events: none;
@@ -74,24 +72,24 @@
     }
 
     .logo-intro__logo {
-      width: clamp(5.5rem, 16vw, 8.4rem);
-      height: clamp(5.5rem, 16vw, 8.4rem);
+      width: clamp(3.75rem, 10.8vw, 5.65rem);
+      height: clamp(3.75rem, 10.8vw, 5.65rem);
       object-fit: contain;
-      filter: drop-shadow(0 0 20px rgba(255,255,255,0.24)) drop-shadow(0 0 34px rgba(225, 29, 72, 0.46));
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.18)) drop-shadow(0 0 16px rgba(225, 29, 72, 0.28));
     }
 
     .logo-intro__orbit {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: clamp(3.1rem, 8vw, 4.4rem);
-      height: clamp(4.35rem, 11vw, 6.2rem);
-      transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.36) rotate(-28deg);
+      width: clamp(2.65rem, 6.8vw, 3.75rem);
+      height: clamp(2.65rem, 6.8vw, 3.75rem);
+      transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.34);
       opacity: 0;
       will-change: transform, opacity;
       backface-visibility: hidden;
       transform-style: preserve-3d;
-      animation: introStarFlight 1.52s cubic-bezier(0.18, 0.82, 0.2, 1) 0.08s forwards;
+      animation: introStarFlight 1.28s cubic-bezier(0.16, 0.82, 0.18, 1) 0.08s forwards;
     }
 
     .logo-intro__flying-star {
@@ -102,12 +100,14 @@
       will-change: transform, opacity;
       backface-visibility: hidden;
       transform: translateZ(0);
-      filter: drop-shadow(0 0 14px rgba(255,255,255,0.72)) drop-shadow(0 0 24px rgba(225,29,72,0.55));
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.52)) drop-shadow(0 0 12px rgba(225,29,72,0.32));
       animation: introStarPulse 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
     }
 
     .logo-intro__gemini-star {
+      transform-box: fill-box;
       transform-origin: 50% 50%;
+      animation: introStarTilt 1.28s cubic-bezier(0.2, 0.74, 0.16, 1) 0.08s forwards;
     }
     .logo-intro__trail {
       position: absolute;
@@ -154,7 +154,7 @@
       background: #E11D48;
       clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
       opacity: 0;
-      filter: drop-shadow(0 0 10px rgba(225,29,72,0.65));
+      filter: drop-shadow(0 0 5px rgba(225,29,72,0.42));
       animation: introSparkBurst 0.82s cubic-bezier(0.16, 1, 0.3, 1) 1.32s forwards;
     }
 
@@ -188,11 +188,18 @@
     }
 
     @keyframes introStarFlight {
-      0% { opacity: 0; transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.36) rotate(-28deg); }
-      10% { opacity: 1; }
-      100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1) rotate(38deg); }
+      0% { opacity: 0; transform: translate3d(-50%, calc(64vh - 50%), 0) scale(0.34); }
+      8% { opacity: 1; }
+      100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
     }
 
+
+    @keyframes introStarTilt {
+      0% { transform: rotate(0deg); }
+      22% { transform: rotate(88deg); }
+      72% { transform: rotate(88deg); }
+      100% { transform: rotate(0deg); }
+    }
     @keyframes introStarPulse {
       0%, 78% { transform: translateZ(0) scale(1); opacity: 1; }
       100% { transform: translateZ(0) scale(0.2); opacity: 0; }
@@ -295,9 +302,80 @@
         window.setTimeout(() => {
           intro?.remove();
           document.documentElement.classList.remove("z-intro-active");
+          document.documentElement.classList.add("z-intro-complete");
         }, reduced ? 700 : 3550);
       })();
     </script>
     <!-- z-intro:end -->
+    <!-- scroll-motion:start -->
+    <script>
+      (() => {
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduced) return;
+
+        const revealConfig = [
+          { selector: "#about > .grid", kind: "section" },
+          { selector: "#about .profile-stage", kind: "profile" },
+          { selector: "#about .relative.border-l > .relative", kind: "card" },
+          { selector: "#about .py-16 > h3, #about .py-16 > div", kind: "section" },
+          { selector: "#about .grid > .space-y-4, #about .grid > .bg-\\[\\#141416\\]", kind: "card" },
+          { selector: "#work > .space-y-6", kind: "section" },
+          { selector: "#work .grid > .group.cursor-pointer", kind: "card" },
+          { selector: "#contact > .grid > div", kind: "section" },
+          { selector: "footer > div > div", kind: "section" },
+          { selector: "section span[class*='h-[1px]'], section div[class*='h-[1px]']", kind: "line" }
+        ];
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            el.classList.add("is-visible");
+            observer.unobserve(el);
+
+            const delay = Number.parseInt(el.style.getPropertyValue("--reveal-delay"), 10) || 0;
+            window.setTimeout(() => {
+              el.classList.remove("scroll-reveal", "is-visible");
+              el.removeAttribute("data-reveal-kind");
+              el.style.removeProperty("--reveal-delay");
+            }, 760 + delay);
+          });
+        }, { threshold: 0.16, rootMargin: "0px 0px -10% 0px" });
+
+        const seen = new WeakSet();
+        let scheduled = 0;
+
+        const prepareGroup = (items, kind) => {
+          items.forEach((el, index) => {
+            if (!el || seen.has(el) || el.closest("#hero")) return;
+            seen.add(el);
+            el.classList.add("scroll-reveal");
+            el.dataset.revealKind = kind;
+            el.style.setProperty("--reveal-delay", `${Math.min(index * 52, 260)}ms`);
+            observer.observe(el);
+          });
+        };
+
+        const prepare = () => {
+          revealConfig.forEach(({ selector, kind }) => {
+            try {
+              prepareGroup(Array.from(document.querySelectorAll(selector)), kind);
+            } catch {
+              // Ignore rare selector parsing edge cases from generated utility classes.
+            }
+          });
+        };
+
+        const schedulePrepare = () => {
+          window.clearTimeout(scheduled);
+          scheduled = window.setTimeout(prepare, 80);
+        };
+
+        window.addEventListener("DOMContentLoaded", schedulePrepare, { once: true });
+        window.addEventListener("load", schedulePrepare, { once: true });
+        new MutationObserver(schedulePrepare).observe(document.getElementById("root"), { childList: true, subtree: true });
+      })();
+    </script>
+    <!-- scroll-motion:end -->      <script type="module" crossorigin src="/dist/assets/index-D_Lzj2AC.js?v=restore-bundle-v1"></script>
   </body>
 </html>
