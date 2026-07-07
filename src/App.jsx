@@ -36,24 +36,33 @@ const StyleLoader = () => (
     @keyframes tuanzHoverSweep {
       0% {
         opacity: 0;
-        transform: translate3d(-125%, 0, 0) skewX(-12deg);
+        transform: translate3d(-150%, 0, 0) skewX(-14deg) scaleX(0.72);
       }
       18% {
-        opacity: 0.9;
+        opacity: 0.72;
       }
-      72% {
-        opacity: 0.88;
+      58% {
+        opacity: 0.54;
       }
       100% {
         opacity: 0;
-        transform: translate3d(135%, 0, 0) skewX(-12deg);
+        transform: translate3d(150%, 0, 0) skewX(-14deg) scaleX(0.72);
       }
     }
+
+    .hero-title-word {
+      display: inline-block;
+      letter-spacing: 0.012em;
+      margin-right: -0.012em;
+    }
+
+    .hero-title-main {
+      margin-right: 0.13em;
+    }
+
     .hero-title-accent-premium {
       position: relative;
       display: inline-block;
-      letter-spacing: 0.035em;
-      margin-right: -0.035em;
       color: transparent;
       -webkit-text-fill-color: transparent;
       background-image: url('/tuanz-texture-psychedelic.jpg');
@@ -73,11 +82,12 @@ const StyleLoader = () => (
     .hero-title-accent-premium::before {
       content: "";
       position: absolute;
-      inset: -0.04em -0.08em -0.02em -0.08em;
+      inset: -0.08em -0.12em -0.04em -0.12em;
       z-index: 1;
-      background: linear-gradient(105deg, transparent 0%, transparent 34%, rgba(255, 255, 255, 0.72) 44%, rgba(225, 29, 72, 0.46) 50%, transparent 64%, transparent 100%);
+      background: linear-gradient(108deg, transparent 0%, transparent 36%, rgba(255, 255, 255, 0.08) 41%, rgba(255, 255, 255, 0.72) 47%, rgba(255, 218, 229, 0.42) 51%, rgba(225, 29, 72, 0.16) 56%, rgba(255, 255, 255, 0.06) 61%, transparent 68%, transparent 100%);
       opacity: 0;
-      transform: translate3d(-120%, 0, 0) skewX(-12deg);
+      transform: translate3d(-150%, 0, 0) skewX(-14deg) scaleX(0.72);
+      filter: blur(0.4px);
       mix-blend-mode: screen;
       pointer-events: none;
     }
@@ -116,7 +126,7 @@ const StyleLoader = () => (
     }
 
     #hero h1:hover .hero-title-accent-premium::before {
-      animation: tuanzHoverSweep 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: tuanzHoverSweep 1080ms cubic-bezier(0.19, 1, 0.22, 1) both;
     }
 
     #hero h1:hover .hero-title-accent-premium::after {
@@ -1129,8 +1139,8 @@ const Hero = ({ lang, onShowToast }) => {
 
         {/* Brand name with regular text Z */}
         <h1 className="font-headings font-black text-5xl sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem] tracking-tight leading-none uppercase relative select-none mb-4">
-          <span className="text-white">HOANG </span>
-          <span className="hero-title-accent-premium">TUANZ</span>
+          <span className="hero-title-word hero-title-main text-white">HOANG</span>
+          <span className="hero-title-word hero-title-accent-premium">TUANZ</span>
         </h1>
 
         <p className="mb-3 inline-flex items-center justify-center gap-2 font-headings text-2xl font-extrabold uppercase leading-none drop-shadow-[0_0_18px_rgba(255,255,255,0.16)]">
