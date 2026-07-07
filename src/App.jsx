@@ -33,9 +33,27 @@ const StyleLoader = () => (
       }
     }
 
+    @keyframes tuanzHoverSweep {
+      0% {
+        opacity: 0;
+        transform: translate3d(-125%, 0, 0) skewX(-12deg);
+      }
+      18% {
+        opacity: 0.9;
+      }
+      72% {
+        opacity: 0.88;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(135%, 0, 0) skewX(-12deg);
+      }
+    }
     .hero-title-accent-premium {
       position: relative;
       display: inline-block;
+      letter-spacing: 0.035em;
+      margin-right: -0.035em;
       color: transparent;
       -webkit-text-fill-color: transparent;
       background-image: url('/tuanz-texture-psychedelic.jpg');
@@ -62,9 +80,6 @@ const StyleLoader = () => (
       transform: translate3d(-120%, 0, 0) skewX(-12deg);
       mix-blend-mode: screen;
       pointer-events: none;
-      transition:
-        opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .hero-title-accent-premium .letter {
@@ -101,8 +116,7 @@ const StyleLoader = () => (
     }
 
     #hero h1:hover .hero-title-accent-premium::before {
-      opacity: 0.9;
-      transform: translate3d(120%, 0, 0) skewX(-12deg);
+      animation: tuanzHoverSweep 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     #hero h1:hover .hero-title-accent-premium::after {
