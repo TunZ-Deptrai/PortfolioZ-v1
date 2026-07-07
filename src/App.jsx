@@ -52,12 +52,21 @@ const StyleLoader = () => (
 
     .hero-title-word {
       display: inline-block;
-      letter-spacing: 0.012em;
+    }
+
+    .hero-title-tight {
+      letter-spacing: -0.012em;
       margin-right: -0.012em;
     }
 
     .hero-title-main {
-      margin-right: 0.13em;
+      margin-right: 0.11em;
+    }
+
+    .hero-title-z {
+      display: inline-block;
+      letter-spacing: 0;
+      margin-left: 0.018em;
     }
 
     .hero-title-accent-premium {
@@ -1139,8 +1148,8 @@ const Hero = ({ lang, onShowToast }) => {
 
         {/* Brand name with regular text Z */}
         <h1 className="font-headings font-black text-5xl sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem] tracking-tight leading-none uppercase relative select-none mb-4">
-          <span className="hero-title-word hero-title-main text-white">HOANG</span>
-          <span className="hero-title-word hero-title-accent-premium">TUANZ</span>
+          <span className="hero-title-word hero-title-tight hero-title-main text-white">HOANG</span>
+          <span className="hero-title-word hero-title-accent-premium"><span className="hero-title-tight">TUAN</span><span className="hero-title-z">Z</span></span>
         </h1>
 
         <p className="mb-3 inline-flex items-center justify-center gap-2 font-headings text-2xl font-extrabold uppercase leading-none drop-shadow-[0_0_18px_rgba(255,255,255,0.16)]">
