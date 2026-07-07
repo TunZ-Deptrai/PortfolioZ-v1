@@ -38,23 +38,6 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
       }
     }
 
-    @keyframes tuanzHoverSweep {
-      0% {
-        opacity: 0;
-        transform: translate3d(-170%, 0, 0) skewX(-16deg) scaleX(0.42);
-      }
-      16% {
-        opacity: 0.48;
-      }
-      52% {
-        opacity: 0.42;
-      }
-      100% {
-        opacity: 0;
-        transform: translate3d(170%, 0, 0) skewX(-16deg) scaleX(0.42);
-      }
-    }
-
     .hero-title-word {
       display: inline-block;
     }
@@ -96,14 +79,18 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
     .hero-title-accent-premium::before {
       content: "";
       position: absolute;
-      inset: -0.08em -0.12em -0.04em -0.12em;
+      inset: -0.06em -0.08em -0.04em -0.08em;
       z-index: 1;
-      background: linear-gradient(108deg, transparent 0%, transparent 42%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.46) 49%, rgba(255, 235, 241, 0.16) 52%, rgba(225, 29, 72, 0.055) 55%, transparent 60%, transparent 100%);
+      background:
+        radial-gradient(ellipse at 62% 54%, rgba(255, 255, 255, 0.18), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.085), transparent 58%);
       opacity: 0;
-      transform: translate3d(-170%, 0, 0) skewX(-16deg) scaleX(0.42);
-      filter: blur(0.18px);
+      transform: translate3d(0, 0.018em, 0) scaleY(0.96);
       mix-blend-mode: screen;
       pointer-events: none;
+      transition:
+        opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .hero-title-accent-premium .letter {
@@ -135,12 +122,13 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
     }
 
     #hero h1:hover .hero-title-accent-premium {
-      filter: saturate(1.06) brightness(1.08) contrast(0.94) drop-shadow(0 0 16px rgba(255, 255, 255, 0.1));
-      animation-duration: 9s !important;
+      filter: saturate(1.1) brightness(1.1) contrast(0.96) drop-shadow(0 0 14px rgba(255, 255, 255, 0.08));
+      animation-duration: 18s !important;
     }
 
     #hero h1:hover .hero-title-accent-premium::before {
-      animation: tuanzHoverSweep 1220ms cubic-bezier(0.19, 1, 0.22, 1) both;
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scaleY(1);
     }
 
     #hero h1:hover .hero-title-accent-premium::after {
