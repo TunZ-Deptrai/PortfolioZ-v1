@@ -65,7 +65,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
     }
 
     .hero-title-main {
-      margin-right: 0.11em;
+      margin-right: 0.16em;
     }
 
     .hero-title-z {
@@ -98,7 +98,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
       position: absolute;
       inset: -0.08em -0.12em -0.04em -0.12em;
       z-index: 1;
-      background: linear-gradient(108deg, transparent 0%, transparent 36%, rgba(255, 255, 255, 0.08) 41%, rgba(255, 255, 255, 0.72) 47%, rgba(255, 218, 229, 0.42) 51%, rgba(225, 29, 72, 0.16) 56%, rgba(255, 255, 255, 0.06) 61%, transparent 68%, transparent 100%);
+      background: linear-gradient(108deg, transparent 0%, transparent 38%, rgba(255, 255, 255, 0.06) 43%, rgba(255, 255, 255, 0.62) 49%, rgba(255, 255, 255, 0.18) 54%, transparent 62%, transparent 100%);
       opacity: 0;
       transform: translate3d(-150%, 0, 0) skewX(-14deg) scaleX(0.72);
       filter: blur(0.4px);
@@ -121,11 +121,11 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
       color: transparent;
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 0.016em rgba(255, 255, 255, 0.84);
-      text-shadow: 0 0 18px rgba(255, 255, 255, 0.2), 0 0 28px rgba(225, 29, 72, 0.2);
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.22);
       opacity: 0;
       transform: translate3d(0, 0, 0) rotate(0deg) scale(0.99);
       transform-origin: 58% 56%;
-      filter: drop-shadow(0 10px 24px rgba(225, 29, 72, 0));
+      filter: drop-shadow(0 10px 24px rgba(255, 255, 255, 0));
       pointer-events: none;
       transition:
         opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -135,7 +135,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
     }
 
     #hero h1:hover .hero-title-accent-premium {
-      filter: saturate(1.18) brightness(1.12) contrast(0.96) drop-shadow(0 0 22px rgba(225, 29, 72, 0.16));
+      filter: saturate(1.06) brightness(1.08) contrast(0.94) drop-shadow(0 0 16px rgba(255, 255, 255, 0.1));
       animation-duration: 9s !important;
     }
 
@@ -145,8 +145,8 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
     #hero h1:hover .hero-title-accent-premium::after {
       opacity: 1;
-      transform: translate3d(0.025em, -0.025em, 0) rotate(5deg) scale(1.08);
-      filter: drop-shadow(0 12px 26px rgba(225, 29, 72, 0.2));
+      transform: translate3d(0.012em, -0.012em, 0) rotate(0deg) scale(1.025);
+      filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.12));
       -webkit-text-stroke-color: rgba(255, 255, 255, 0.96);
     }
 
