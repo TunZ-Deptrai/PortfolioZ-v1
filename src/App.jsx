@@ -120,6 +120,86 @@ const StyleLoader = () => (
       display: none;
     }
 
+
+    @keyframes profileStageFloat {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -0.42rem, 0); }
+    }
+
+    @keyframes profileStageDrift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      50% { transform: translate3d(0.22rem, -0.32rem, 0) rotate(-0.35deg); }
+    }
+
+    @keyframes profileStageGlow {
+      0%, 100% { opacity: 0.74; transform: translate3d(0, 0, 0) scale(1); }
+      50% { opacity: 1; transform: translate3d(0, -0.24rem, 0) scale(1.035); }
+    }
+
+    @keyframes profileStageStatFloat {
+      0%, 100% { transform: translate3d(0, var(--stat-offset, 0), 0); }
+      50% { transform: translate3d(0, calc(var(--stat-offset, 0) - 0.34rem), 0); }
+    }
+
+    @keyframes profileStageSparkle {
+      0%, 100% { opacity: 0.78; transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      50% { opacity: 1; transform: translate3d(-0.12rem, -0.22rem, 0) rotate(9deg) scale(1.08); }
+    }
+
+    .profile-stage__ambient {
+      animation: profileStageGlow 7.8s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .profile-stage__sparkle {
+      animation: profileStageSparkle 6.4s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .profile-stage__z {
+      animation: profileStageDrift 9s ease-in-out infinite;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+
+    .profile-stage__portrait-wrap {
+      animation: profileStageFloat 7.2s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .profile-stage__person {
+      animation: profileStageDrift 8.6s ease-in-out infinite reverse;
+      transform-origin: 48% 62%;
+      will-change: transform;
+    }
+
+    .profile-stage__halo {
+      animation: profileStageGlow 7.4s ease-in-out infinite 0.45s;
+      will-change: opacity, transform;
+    }
+
+    .profile-stage__stat {
+      --stat-offset: 0rem;
+      animation: profileStageStatFloat 6.6s ease-in-out infinite;
+      animation-delay: var(--stat-delay, 0s);
+      will-change: transform;
+    }
+
+    .profile-stage__stat--lower {
+      --stat-offset: 1.5rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .profile-stage__ambient,
+      .profile-stage__sparkle,
+      .profile-stage__z,
+      .profile-stage__portrait-wrap,
+      .profile-stage__person,
+      .profile-stage__halo,
+      .profile-stage__stat {
+        animation: none !important;
+      }
+    }
     ::selection {
       background-color: #E11D48;
       color: #FFFFFF;
@@ -1222,8 +1302,8 @@ const About = ({ lang }) => {
         {/* Profile stage & Stats */}
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="profile-stage relative min-h-[690px] sm:min-h-[740px] lg:min-h-[790px] overflow-visible">
-            <div className="absolute inset-x-0 top-8 h-[66%] rounded-xl bg-[#E11D48]/[0.025] blur-2xl" />
-            <StarDecorationSVG className="absolute right-3 top-2 w-4 h-4 text-[#E11D48] drop-shadow-[0_0_8px_rgba(225,29,72,0.4)]" />
+            <div className="profile-stage__ambient absolute inset-x-0 top-8 h-[66%] rounded-xl bg-[#E11D48]/[0.025] blur-2xl" />
+            <StarDecorationSVG className="profile-stage__sparkle absolute right-3 top-2 w-4 h-4 text-[#E11D48] drop-shadow-[0_0_8px_rgba(225,29,72,0.4)]" />
 
             <img
               src="/z.svg"
@@ -1232,8 +1312,8 @@ const About = ({ lang }) => {
               className="profile-stage__z absolute left-[calc(50%+3px)] top-[5.1rem] z-0 w-[94%] max-w-[590px] -translate-x-1/2 opacity-75"
             />
 
-            <div className="absolute -inset-x-5 -top-4 z-10 mx-auto flex h-[79%] max-w-[610px] items-end justify-center overflow-visible">
-              <div className="absolute left-1/2 top-[44%] aspect-square w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(225,29,72,0.22)_0%,rgba(225,29,72,0.11)_42%,transparent_70%)] blur-2xl" />
+            <div className="profile-stage__portrait-wrap absolute -inset-x-5 -top-4 z-10 mx-auto flex h-[79%] max-w-[610px] items-end justify-center overflow-visible">
+              <div className="profile-stage__halo absolute left-1/2 top-[44%] aspect-square w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(225,29,72,0.22)_0%,rgba(225,29,72,0.11)_42%,transparent_70%)] blur-2xl" />
               <img
                 src="/Tuanzdeptrai2.svg"
                 alt="Hoang Tuanz Portrait"
@@ -1250,7 +1330,8 @@ const About = ({ lang }) => {
               ].map((stat, i) => (
                 <div
                   key={i}
-                  className={`profile-stage__stat min-h-[128px] rounded-xl border border-white/[0.08] bg-[#141416]/85 p-5 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl crimson-border-hover sm:p-6 ${i % 2 === 1 ? "translate-y-6" : ""}`}
+                  className={`profile-stage__stat min-h-[128px] rounded-xl border border-white/[0.08] bg-[#141416]/85 p-5 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl crimson-border-hover sm:p-6 ${i % 2 === 1 ? "profile-stage__stat--lower" : ""}`}
+                  style={{ "--stat-delay": `${i * 0.55}s` }}
                 >
                   <h4 className="font-headings text-3xl font-extrabold leading-none text-[#E11D48] sm:text-4xl">{stat.value}</h4>
                   <p className="mt-3 font-mono text-[9px] font-bold uppercase tracking-widest text-zinc-300">{stat.label}</p>
