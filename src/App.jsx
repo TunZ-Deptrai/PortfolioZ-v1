@@ -194,8 +194,8 @@ const TRANSLATIONS = {
     navHire: "HỢP TÁC NGAY",
     heroAvailable: "Sẵn sàng nhận dự án · TP. Hồ Chí Minh 🇻🇳",
     heroSubheading: "Thiết kế sản phẩm số đơn giản, trực quan và lấy người dùng làm trung tâm",
-    heroViewWork: "Xem sản phẩm",
-    heroDownloadCV: "Tải CV (.PDF)",
+    heroViewWork: "XEM DỰ ÁN",
+    heroDownloadCV: "XEM RESUME",
     heroOpenToWork: "Nhận dự án tự do",
     aboutEyebrow: "Về Tôi",
     aboutHeading: "CHUYỂN HÓA Ý TƯỞNG THÀNH TRẢI NGHIỆM THÂN THIỆN VỚI NGƯỜI DÙNG",
@@ -206,7 +206,7 @@ const TRANSLATIONS = {
     aboutExperienceTitle: "Quá trình công tác",
     aboutStatsYears: "Năm Kinh Nghiệm",
     aboutStatsProjects: "Dự Án Hoàn Thành",
-    aboutStatsClients: "Màn hình thiết kế",
+    aboutStatsClients: "Khách Hàng Lớn",
     aboutStatsAwards: "Giải Thưởng Thiết Kế",
     workEyebrow: "Dự án chọn lọc",
     workHeading: "Các dự án tôi đặt tâm huyết nhất",
@@ -286,8 +286,8 @@ const TRANSLATIONS = {
     navHire: "HIRE ME NOW",
     heroAvailable: "Available for freelance · Ho Chi Minh City 🇻🇳",
     heroSubheading: "Simple, intuitive, user-centered digital product design.",
-    heroViewWork: "View my work",
-    heroDownloadCV: "Download CV (.PDF)",
+    heroViewWork: "VIEW PROJECTS",
+    heroDownloadCV: "VIEW RESUME",
     heroOpenToWork: "Open to work",
     aboutEyebrow: "About me",
     aboutHeading: "TURNING IDEAS INTO USER-FRIENDLY EXPERIENCES",
@@ -298,7 +298,7 @@ const TRANSLATIONS = {
     aboutExperienceTitle: "Experience timeline",
     aboutStatsYears: "Years Experience",
     aboutStatsProjects: "Projects Delivered",
-    aboutStatsClients: "Design Screens",
+    aboutStatsClients: "Happy Clients",
     aboutStatsAwards: "Design Awards",
     workEyebrow: "Selected work",
     workHeading: "Projects I'm proud of",
@@ -914,68 +914,67 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
         ? "bg-[#0C0C0E]/90 backdrop-blur-md border-b border-white/[0.06] py-3.5" 
         : "bg-transparent py-5"
     }`}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
-        {/* Brand logo image from Logo.png */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between relative">
+        {/* Brand logo & PORTFOLIO text */}
         <button 
           onClick={() => handleLinkClick("home", "hero")} 
           className="group flex items-center gap-3 focus:outline-none"
         >
-          <div className="relative w-9 h-9 flex items-center justify-center bg-white/[0.02] border border-white/[0.08] rounded-lg group-hover:border-[#E11D48]/50 transition-all duration-300 p-1.5">
-            <img 
-              src="Logo.png" 
-              alt="Hoang Tuanz Logo" 
-              className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(225,29,72,0.4)]"
-            />
-          </div>
-          <span className="hidden sm:inline-block text-[9px] font-mono tracking-widest text-zinc-400 uppercase bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-lg ml-1">
-            UI/UX Studio
+          <img 
+            src="Logo.png" 
+            alt="Hoang Tuanz Logo" 
+            className="w-9 h-9 object-contain filter drop-shadow-[0_0_8px_rgba(225,29,72,0.4)]"
+          />
+          <span className="font-headings font-bold text-xs tracking-[0.25em] text-white uppercase">
+            PORTFOLIO
           </span>
         </button>
 
-        {/* Desktop links - Smooth scroll triggers */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop links - Smooth scroll triggers, uppercase to match the screenshot */}
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 font-headings">
           <button
             onClick={() => handleLinkClick("home", "hero")}
-            className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
+            className="relative font-bold text-[11px] tracking-widest uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
           >
-            {t.navHome}
+            {lang === 'vi' ? 'Trang Chủ' : 'Home'}
+          </button>
+
+          <button
+            onClick={() => handleLinkClick("home", "about")}
+            className="relative font-bold text-[11px] tracking-widest uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
+          >
+            {lang === 'vi' ? 'Giới Thiệu' : 'About'}
           </button>
 
           <button
             onClick={() => handleLinkClick("home", "work")}
-            className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
+            className="relative font-bold text-[11px] tracking-widest uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
           >
-            {t.navWork}
+            {lang === 'vi' ? 'Dự Án' : 'Projects'}
           </button>
           
           <button
-            onClick={() => handleLinkClick("home", "about")}
-            className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
-          >
-            {t.navAbout}
-          </button>
-
-          <button
             onClick={() => handleLinkClick("home", "contact")}
-            className="relative font-semibold text-xs tracking-wider uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
+            className="relative font-bold text-[11px] tracking-widest uppercase py-2 transition-colors duration-300 text-zinc-400 hover:text-white"
           >
-            {t.navContact}
+            {lang === 'vi' ? 'Liên Hệ' : 'Contact'}
           </button>
         </div>
 
         {/* Global actions row */}
-        <div className="hidden md:flex items-center gap-6">
-          {/* Custom Lang Switcher */}
-          <div className="flex items-center bg-white/[0.03] border border-white/[0.08] rounded-lg p-1 font-mono text-[11px] font-semibold">
+        <div className="hidden md:flex items-center gap-8">
+          {/* Custom plain text Lang Switcher: EN / VI */}
+          <div className="flex items-center gap-2 font-headings text-xs font-bold tracking-wider">
             <button 
               onClick={() => setLang('en')}
-              className={`px-3 py-1.5 rounded-md transition-all ${lang === 'en' ? 'bg-[#E11D48] text-white' : 'text-zinc-400 hover:text-white'}`}
+              className={`transition-colors duration-300 ${lang === 'en' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
             >
               EN
             </button>
+            <span className="text-zinc-600">/</span>
             <button 
               onClick={() => setLang('vi')}
-              className={`px-3 py-1.5 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400 hover:text-white'}`}
+              className={`transition-colors duration-300 ${lang === 'vi' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
             >
               VI
             </button>
@@ -983,24 +982,25 @@ const Navbar = ({ lang, setLang, activeRoute, onNavigate }) => {
 
           <button 
             onClick={() => handleLinkClick("home", "contact")}
-            className="font-bold text-xs tracking-widest uppercase bg-[#E11D48] text-white px-5 py-3.5 rounded-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] outline-none focus:ring-2 focus:ring-[#E11D48]"
+            className="font-headings font-bold text-[11px] tracking-wider uppercase bg-[#E11D48] text-white px-6 py-2.5 rounded-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] outline-none"
           >
-            {t.navHire}
+            {lang === 'vi' ? 'Liên Hệ' : "Let's Talk"}
           </button>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex items-center gap-3 md:hidden">
-          <div className="flex items-center bg-white/[0.03] border border-white/[0.08] rounded-lg p-0.5 font-mono text-[9px] font-semibold">
+        <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-1.5 font-headings text-[10px] font-bold">
             <button 
               onClick={() => setLang('en')}
-              className={`px-2 py-1 rounded-md transition-all ${lang === 'en' ? 'bg-[#E11D48] text-white' : 'text-zinc-400'}`}
+              className={`transition-all ${lang === 'en' ? 'text-white' : 'text-zinc-500'}`}
             >
               EN
             </button>
+            <span className="text-zinc-700">/</span>
             <button 
               onClick={() => setLang('vi')}
-              className={`px-2 py-1 rounded-md transition-all ${lang === 'vi' ? 'bg-[#E11D48] text-white' : 'text-zinc-400'}`}
+              className={`transition-all ${lang === 'vi' ? 'text-white' : 'text-zinc-500'}`}
             >
               VI
             </button>
